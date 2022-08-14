@@ -1,0 +1,16 @@
+service:
+    mode: debug
+    port: :3000
+
+redis:
+    addr: 127.0.0.1:6379
+    passwd:
+    dbname: 2
+
+mysql:
+    host: 127.0.0.1
+    port: 3306
+    user: alan
+    passwd: M7auDkfa
+    database: todo_list_db
+    charset: utf8mb4
