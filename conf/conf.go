@@ -10,7 +10,7 @@ func InitConfig() {
 	workDir, _ := os.Getwd()
 	viper.SetConfigName("config")
 	viper.SetConfigType("yml")
-	viper.AddConfigPath(workDir + "/config")
+	viper.AddConfigPath(workDir + "/conf")
 	if err := viper.ReadInConfig(); err != nil {
 		panic("Couldn't read config file'")
 	}

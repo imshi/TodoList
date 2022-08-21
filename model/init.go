@@ -24,14 +24,15 @@ func InitDB() {
 	passwd := viper.GetString("mysql.passwd")
 	charset := viper.GetString("mysql.charset")
 
-	dsn := fmt.Sprintf("%s:%s@tcp(%s:%v)/%s?charset=%s&parseTime=True&loc=Local", username, passwd, host, port, charset, database)
+	dsn := fmt.Sprintf("%s:%s@tcp(%s:%v)/%s?charset=%s&parseTime=True&loc=Local", username, passwd, host, port, database, charset)
 
+	fmt.Println(dsn)
 	Database(dsn)
 
 }
 
 // Database 指定数据库连接属性、池化连接配置
-func Database(connString string) error {
+func Database(connString string) {
 	var ormLogger logger.Interface
 	if gin.Mode() == "debug" {
 		ormLogger = logger.Default.LogMode(logger.Info)
@@ -56,10 +57,15 @@ func Database(connString string) error {
 		panic(err)
 	}
 
+	// fmt.Println(time.Now(), "数据库连接成功")
+
 	sqlDB, _ := db.DB()
 	sqlDB.SetMaxIdleConns(20)                  //设置最大空闲连接池
 	sqlDB.SetMaxOpenConns(20)                  //设置最大打开连接池
 	sqlDB.SetConnMaxLifetime(time.Second * 30) //设置连接最大空闲时间
 
-	return err
+	// _ = db.AutoMigrate(&User{}, &Task{})
+	DB = db
+	migration()
+
 }
