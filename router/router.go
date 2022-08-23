@@ -1,6 +1,8 @@
 package router
 
 import (
+	"todolist/api"
+
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-contrib/sessions/cookie"
 	"github.com/gin-gonic/gin"
@@ -22,4 +24,5 @@ func NewRouter() *gin.Engine {
 		// 用户操作
 		v1.POST("/user/register", api.UserRegister)
 	}
+	return r
 }

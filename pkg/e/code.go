@@ -6,8 +6,10 @@ const (
 	InvalidParams = 400
 
 	// 成员错误
-	ErrorExistUser    = 10002
-	ErrorNotExistUser = 10003
+	ErrorExistUser      = 10002
+	ErrorNotExistUser   = 10003
+	ErrorFailEncryption = 10006
+	ErrorNotCompareUser = 10007
 
 	ErrorDatabase = 40001
 )

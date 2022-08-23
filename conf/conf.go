@@ -14,4 +14,8 @@ func InitConfig() {
 	if err := viper.ReadInConfig(); err != nil {
 		panic("Couldn't read config file'")
 	}
+	// 国际化配置
+	if err := LoadLocales("conf/locales/zh-cn.yaml"); err != nil {
+		panic(err)
+	}
 }
