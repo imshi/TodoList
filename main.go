@@ -15,5 +15,3 @@ func main() {
 	r := router.NewRouter()
 	_ = r.Run(viper.GetString("service.port"))
 }
-
-func 
